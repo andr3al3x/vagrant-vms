@@ -25,6 +25,7 @@ rm -rf /home/vagrant/biserver-ee-$pentaho_version
 rm -rf /home/vagrant/paz-plugin-ee-$pentaho_version
 rm -rf /home/vagrant/pir-plugin-ee-$pentaho_version
 rm -rf /home/vagrant/pdd-plugin-ee-$pentaho_version
+rm -rf /home/vagrant/pentaho-plugins
 
 # Install PostgreSQL
 apt-get install -y postgresql > /dev/null 2>&1
