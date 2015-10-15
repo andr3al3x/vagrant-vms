@@ -1,0 +1,24 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+pentaho_version="5.4.0.1-130"
+pentaho_package_folder="/Users/puls3/Downloads/Pentaho"
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "ubuntu/trusty64"
+  config.vm.hostname = "trusty-biserver"
+  config.vm.network "private_network", ip: "192.168.33.11"
+  
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 2048
+    vb.cpus = 4
+  end
+
+  config.vm.provision "shell", path: "provision.sh"
+  config.vm.provision "shell", path: "provision_pentaho_ee.sh", args: [pentaho_version]
+
+  config.vm.synced_folder "#{pentaho_package_folder}", "/vagrant-files"
+end
