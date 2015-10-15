@@ -36,15 +36,18 @@ cat >> /etc/postgresql/9.3/main/pg_hba.conf <<EOF
 host    all         all         0.0.0.0/0             md5
 EOF
 
-sed -i 's/^local\s\+all\s\+all\s\+peer/local all all md5/g' /etc/postgresql/9.3/main/pg_hba.conf
 sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/" /etc/postgresql/9.3/main/postgresql.conf
 
+# Setup the PostgreSQL repos
+sed -i 's/^local\s\+all\s\+all\s\+peer/local all all trust/g' /etc/postgresql/9.3/main/pg_hba.conf
 service postgresql restart
 
-# Setup the PostgreSQL repos
 sudo -u postgres psql < /home/vagrant/pentaho/biserver-ee/data/postgresql/create_repository_postgresql.sql > /dev/null 2>&1
 sudo -u postgres psql < /home/vagrant/pentaho/biserver-ee/data/postgresql/create_jcr_postgresql.sql > /dev/null 2>&1
 sudo -u postgres psql < /home/vagrant/pentaho/biserver-ee/data/postgresql/create_quartz_postgresql.sql > /dev/null 2>&1
+
+sed -i 's/^local\s\+all\s\+all\s\+trust/local all all md5/g' /etc/postgresql/9.3/main/pg_hba.conf
+service postgresql restart
 
 # Start Pentaho
 rm /home/vagrant/pentaho/biserver-ee/promptuser.sh
