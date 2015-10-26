@@ -31,3 +31,6 @@ sh -c "echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-
 
 # Install Java
 apt-get install -y oracle-java7-installer > /dev/null 2>&1
+
+# Remove the 127.0.1.1 entry from the hosts file
+sed -i "s/127.0.1.1.*//" /etc/hosts
