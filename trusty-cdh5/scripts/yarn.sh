@@ -20,7 +20,7 @@ for x in `cd /etc/init.d ; ls hadoop-hdfs-*` ; do sudo service $x start ; done
 # Create the appropriate HDFS directories
 sh /usr/lib/hadoop/libexec/init-hdfs.sh
 sudo -u hdfs hadoop fs -mkdir -p /user/vagrant
-sudo -u hdfs hadoop fs -chown puls3 /user/vagrant
+sudo -u hdfs hadoop fs -chown vagrant /user/vagrant
 sudo -u hdfs hadoop fs -mkdir -p /opt 
 sudo -u hdfs hadoop fs -chmod -R 1777 /opt
 
