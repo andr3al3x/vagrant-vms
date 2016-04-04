@@ -1,11 +1,13 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+CLOUDERA_CDH_VERSION="5"
+
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.hostname = "trusty-cdh5"
   config.vm.network "private_network", ip: "192.168.33.11"
-  
+
   config.hostmanager.enabled = true
   config.hostmanager.manage_host = true
 
@@ -16,11 +18,13 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "shell", path: "scripts/base.sh"
 
-  config.vm.provision "shell", path: "scripts/yarn.sh"
+  config.vm.provision "shell", path: "scripts/yarn.sh", args: [CLOUDERA_CDH_VERSION]
 
   config.vm.provision "shell", path: "scripts/hive.sh"
 
   config.vm.provision "shell", path: "scripts/impala.sh"
 
   config.vm.provision "shell", path: "scripts/hbase.sh"
+
+  config.vm.provision "shell", path: "scripts/spark.sh"
 end
