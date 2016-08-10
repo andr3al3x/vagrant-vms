@@ -37,4 +37,4 @@ setenforce 0
 
 # set ambari authorized key
 mkdir ~/.ssh
-cat /home/vagrant/sync/rsa/id_rsa_hdp.pub >> ~/.ssh/authorized_keys
+cat /vagrant/rsa/id_rsa_hdp.pub >> ~/.ssh/authorized_keys
