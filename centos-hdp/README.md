@@ -6,6 +6,7 @@
 | --- |--- |
 | vbguest | vagrant plugin install vagrant-vbguest |
 | hostmanager | vagrant plugin install vagrant-hostmanager |
+| timezone | vagrant plugin install vagrant-timezone |
 
 ## Installation Notes
 

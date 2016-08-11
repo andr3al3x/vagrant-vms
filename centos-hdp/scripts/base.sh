@@ -5,13 +5,6 @@ yum clean all
 yum -y update all
 yum -y install nc expect ed ntp dmidecode pciutils wget
 
-# remove hostname entry from 127.0.0.1
-sed -i "1s/centos-hdp//" /etc/hosts
-
-# setup correct timezone
-rm /etc/localtime
-ln -s /usr/share/zoneinfo/Europe/Lisbon /etc/localtime
-
 # start ntpd
 systemctl start ntpd
 systemctl enable ntpd
@@ -38,3 +31,6 @@ setenforce 0
 # set ambari authorized key
 mkdir ~/.ssh
 cat /vagrant/rsa/id_rsa_hdp.pub >> ~/.ssh/authorized_keys
+
+# remove hostname entry from 127.0.0.1
+sed -i "1d" /etc/hosts
