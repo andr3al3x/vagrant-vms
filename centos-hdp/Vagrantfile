@@ -17,7 +17,7 @@ Vagrant.configure(2) do |config|
   if Vagrant.has_plugin?("vagrant-timezone")
     config.timezone.value = "UTC"
   end
-  
+
   config.vm.provider "virtualbox" do |vb|
     vb.memory = 8192
     vb.cpus = 4
@@ -30,4 +30,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", path: "scripts/base.sh"
 
   config.vm.provision "shell", path: "scripts/ambari.sh"
+
+  # Optional: provision the R engine
+  # config.vm.provision "shell", path: "scripts/rlang.sh"
 end
