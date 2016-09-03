@@ -34,3 +34,6 @@ apt-get install -y oracle-java7-installer > /dev/null 2>&1
 
 # Remove the 127.0.1.1 entry from the hosts file
 sed -i "s/127.0.1.1.*//" /etc/hosts
+
+# Remove hostname pointing to 127.0.0.1
+sed -i "1d" /etc/hosts

@@ -39,18 +39,16 @@ sudo -u hdfs hadoop fs -chown vagrant /user/vagrant
 sudo -u hdfs hadoop fs -mkdir -p /opt
 sudo -u hdfs hadoop fs -chmod -R 1777 /opt
 
-# Setup the history server permissions correctly
-sudo -u hdfs hadoop fs -mkdir -p /var/log /var/log/hadoop-yarn/apps /user/history
-sudo -u hdfs hadoop fs -chmod -R 1777 /user/history
-sudo -u hdfs hadoop fs -chown mapred:hadoop /user/history
-sudo -u hdfs hadoop fs -chmod -R 1777 /var/log/hadoop-yarn/apps
-sudo -u hdfs hadoop fs -chown yarn:mapred /var/log/hadoop-yarn/apps
-
-# Start YARN services
-service hadoop-yarn-resourcemanager start
-service hadoop-yarn-nodemanager start
-service hadoop-mapreduce-historyserver start
-
 # Set hadoop services to listen on the appropriate hostname
 sed -i "s/localhost/$HOSTNAME/g" /etc/hadoop/conf/core-site.xml
 sed -i "s/localhost/$HOSTNAME/g" /etc/hadoop/conf/mapred-site.xml
+
+# Restart HDFS services
+service hadoop-hdfs-namenode restart
+service hadoop-hdfs-datanode restart
+service hadoop-hdfs-secondarynamenode restart
+
+# Restart YARN services
+service hadoop-yarn-resourcemanager restart
+service hadoop-yarn-nodemanager restart
+service hadoop-mapreduce-historyserver restart
