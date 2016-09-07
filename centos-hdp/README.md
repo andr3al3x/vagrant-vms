@@ -10,4 +10,20 @@
 
 ## Installation Notes
 
+# Using ambari to provision the cluster
 After the initial provisioning, open the vm 8080 port in the host browser and proceed with the installation. The host private key used in the template is in the rsa folder.
+
+# Automated deployment with provided blueprints
+Open an ssh console (vagrant ssh) and deploy one of the available blueprints in the blueprint folder.
+
+Installation with default values
+```
+curl -H "X-Requested-By: ambari" -X POST -u admin:admin "http://centos-hdp:8080/api/v1/blueprints/single-node-centos-hdp" -d @/vagrant/blueprint/single_node_blueprint_default.json
+curl -H "X-Requested-By: ambari" -X POST -u admin:admin "http://centos-hdp:8080/api/v1/clusters/hdp" -d @/vagrant/blueprint/single_node_host_mapping.json
+```
+
+Installation customized for an 8Gb VM
+```
+curl -H "X-Requested-By: ambari" -X POST -u admin:admin "http://centos-hdp:8080/api/v1/blueprints/single-node-centos-hdp" -d @/vagrant/blueprint/single_node_blueprint_custom.json
+curl -H "X-Requested-By: ambari" -X POST -u admin:admin "http://centos-hdp:8080/api/v1/clusters/hdp" -d @/vagrant/blueprint/single_node_host_mapping.json
+```

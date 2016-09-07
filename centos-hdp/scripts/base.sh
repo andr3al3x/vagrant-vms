@@ -30,6 +30,8 @@ setenforce 0
 
 # set ambari authorized key
 mkdir ~/.ssh
+cp /vagrant/rsa/id_rsa_hdp.pub ~/.ssh/id_rsa.pub
+cp /vagrant/rsa/id_rsa_hdp ~/.ssh/id_rsa
 cat /vagrant/rsa/id_rsa_hdp.pub >> ~/.ssh/authorized_keys
 
 # remove hostname entry from 127.0.0.1

@@ -5,3 +5,7 @@ wget -nv http://public-repo-1.hortonworks.com/ambari/centos7/2.x/updates/2.2.2.0
 yum -y install ambari-server
 ambari-server setup -s
 ambari-server start
+
+# install ambari agent
+yum -y install ambari-agent
+ambari-agent start
