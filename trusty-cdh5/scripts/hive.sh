@@ -3,7 +3,7 @@
 sudo sh -c "echo 'mysql-server-5.5 mysql-server/root_password password root' | debconf-set-selections"
 sudo sh -c "echo 'mysql-server-5.5 mysql-server/root_password_again password root' | debconf-set-selections"
 
-apt-get install -y hive hive-metastore hive-server2 mysql-server libmysql-java > /dev/null 2>&1
+apt-get -qq install -y hive hive-metastore hive-server2 mysql-server libmysql-java > /dev/null 2>&1
 ln -s /usr/share/java/mysql-connector-java.jar /usr/lib/hive/lib/mysql-connector-java.jar
 
 cp /vagrant/conf/hive-site.xml /etc/hive/conf/hive-site.xml

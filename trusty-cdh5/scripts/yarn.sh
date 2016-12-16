@@ -21,13 +21,13 @@ EOF
 sed -i "s/trusty-cdh5/trusty-cdh$CLOUDERA_CDH_VERSION/g" /etc/apt/sources.list.d/cloudera-cdh5.list
 
 # Update and set defaults
-apt-get update > /dev/null
+apt-get -qq update
 
 # Install base hadoop
-apt-get install -y hadoop-conf-pseudo
+apt-get -qq install -y hadoop-conf-pseudo pig
 
 # Format the namenode
-sudo -u hdfs hdfs namenode -format > /dev/null 2>&1
+sudo -u hdfs hdfs namenode -format
 
 # Start the HDFS Services
 for x in `cd /etc/init.d ; ls hadoop-hdfs-*` ; do sudo service $x start ; done
