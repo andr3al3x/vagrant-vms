@@ -24,6 +24,7 @@ sysctl -p
 echo "umask 022" >> /etc/profile
 echo "echo 'never' > /sys/kernel/mm/redhat_transparent_hugepage/defrag" >> /etc/rc.local
 echo "echo 'never' > /sys/kernel/mm/redhat_transparent_hugepage/enabled" >> /etc/rc.local
+echo "echo 'no' > /sys/kernel/mm/redhat_transparent_hugepage/khugepaged/defrag" >> /etc/rc.local
 sed -i "s/^SELINUX=.*/SELINUX=disabled/g" /etc/sysconfig/selinux
 sed -i "s/^SELINUX=.*/SELINUX=disabled/g" /etc/selinux/config
 setenforce 0
