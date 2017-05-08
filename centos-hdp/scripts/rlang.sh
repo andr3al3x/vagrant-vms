@@ -9,7 +9,7 @@ yum -y install R
 
 # Install the rJava package
 mkdir -p /opt/R/packages
-R CMD javareconf JAVA_HOME=/usr/jdk64/jdk1.8.0_60
+R CMD javareconf JAVA_HOME=/usr/jdk64/jdk1.8.0_77
 Rscript -e 'install.packages("rJava", lib="/opt/R/packages", repos="http://cran.r-project.org")'
 
 # set the R environment settings
