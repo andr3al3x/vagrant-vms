@@ -43,6 +43,21 @@ sudo -u hdfs hadoop fs -chmod -R 1777 /opt
 sed -i "s/localhost/$HOSTNAME/g" /etc/hadoop/conf/core-site.xml
 sed -i "s/localhost/$HOSTNAME/g" /etc/hadoop/conf/mapred-site.xml
 
+# Add Hive proxyuser settings
+sed -i '$ d' /etc/hadoop/conf/core-site.xml
+cat >> /etc/hadoop/conf/core-site.xml << EOL
+  <!-- Hive proxy settings so Spark execution does not complain -->
+  <property>
+    <name>hadoop.proxyuser.hive.groups</name>
+    <value>*</value>
+  </property>
+  <property>
+    <name>hadoop.proxyuser.hive.hosts</name>
+    <value>*</value>
+  </property>
+</configuration>
+EOL
+
 # Restart HDFS services
 service hadoop-hdfs-namenode restart
 service hadoop-hdfs-datanode restart
