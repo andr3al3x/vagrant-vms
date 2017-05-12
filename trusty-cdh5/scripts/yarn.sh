@@ -24,7 +24,7 @@ sed -i "s/trusty-cdh5/trusty-cdh$CLOUDERA_CDH_VERSION/g" /etc/apt/sources.list.d
 apt-get -qq update
 
 # Install base hadoop
-apt-get -qq install -y hadoop-conf-pseudo pig
+apt-get -qq install -y hadoop-conf-pseudo pig zookeeper-server
 
 # Format the namenode
 sudo -u hdfs hdfs namenode -format
@@ -67,3 +67,7 @@ service hadoop-hdfs-secondarynamenode restart
 service hadoop-yarn-resourcemanager restart
 service hadoop-yarn-nodemanager restart
 service hadoop-mapreduce-historyserver restart
+
+# Initialize zookeeper 
+service zookeeper-server init
+service zookeeper-server start

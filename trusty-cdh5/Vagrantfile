@@ -39,4 +39,6 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", path: "scripts/hbase.sh"
 
   config.vm.provision "shell", path: "scripts/spark.sh"
+
+  config.vm.provision "shell", path: "scripts/kafka.sh"
 end

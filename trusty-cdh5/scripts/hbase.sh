@@ -1,8 +1,6 @@
 #! /bin/bash
 
-apt-get -qq install -y hbase hbase-master hbase-thrift hbase-regionserver zookeeper-server
-service zookeeper-server init
-service zookeeper-server start
+apt-get -qq install -y hbase hbase-master hbase-thrift hbase-regionserver
 
 cp /vagrant/conf/hbase-site.xml /etc/hbase/conf/hbase-site.xml
 
