@@ -1,0 +1,14 @@
+{
+  "blueprint" : "single-node-centos-hdp",
+  "default_password" : "passw0rd",
+  "host_groups" :[
+    {
+      "name" : "master_group",
+      "hosts" : [
+        {
+          "fqdn" : "centos-hdp"
+        }
+      ]
+    }
+  ]
+}
