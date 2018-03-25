@@ -37,3 +37,6 @@ cat /vagrant/rsa/id_rsa_hdp.pub >> ~/.ssh/authorized_keys
 
 # remove hostname entry from 127.0.0.1
 sed -i "1d" /etc/hosts
+
+# disable python controlling certificate verification
+sed -i 's/verify=platform_default/verify=disable/' /etc/python/cert-verification.cfg
