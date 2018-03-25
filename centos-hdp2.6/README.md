@@ -27,3 +27,12 @@ Installation customized for an 8Gb VM
 curl -H "X-Requested-By: ambari" -X POST -u admin:admin "http://centos-hdp:8080/api/v1/blueprints/single-node-centos-hdp" -d @/vagrant/blueprint/single_node_blueprint_custom.json
 curl -H "X-Requested-By: ambari" -X POST -u admin:admin "http://centos-hdp:8080/api/v1/clusters/hdp" -d @/vagrant/blueprint/single_node_host_mapping.json
 ```
+
+### Cluster Configuration for Pentaho 8
+
+```
+sudo -u hdfs hadoop fs -mkdir -p /user/vagrant
+sudo -u hdfs hadoop fs -chown vagrant /user/vagrant
+sudo -u hdfs hadoop fs -mkdir -p /opt
+sudo -u hdfs hadoop fs -chmod -R 1777 /opt
+```
